@@ -1,6 +1,6 @@
 # SoalShift_modul1_B11
 
-Soal Nomer 1.
+**Soal Nomer 1.
 
    Pertama unzip file nature.zip dengan perintah
  
@@ -20,22 +20,26 @@ Soal Nomer 1.
       i=$((i+1)) 
   done
   ```
-   Semua file yang sudah di dekripsi akan berada pada folder Decode dan siap untuk dibuka.
-
+   Semua file yang sudah di dekripsi akan berada pada folder Decode dan siap untuk dibuka. Selanjutnya syarat untuk membuka file dari nature.zip pada 14 Februari pukul 14:14 atau pada haru Jumat di bulan Februari dapat dilakukan dengan cara menambahkan cronjob dengan cara mengetikan **crontab -e** lalu menginputkan script berikut:
+   `14 14 14 2 * [user] [Path to soal1.sh]
+   14 14 * 2 5 [user] [Path to soal1.sh]`
+   Lalu simpan, selanjutnya script akan berjalan secara otomatis pada waktu yang telah ditetapkan pada cornjob.
    
-Soal Nomer 2.
+**Soal Nomer 2.
 
-   Terdapat sebuah file WA_Sales_Products_2012-14.csv yang berisi data penjualan negara. Kita harus mencari negara manakah yang memiliki penujualan terbanyak pada tahun 2012. Script yang digunakan adalah sebagai berikut:
+   Terdapat sebuah file **WA_Sales_Products_2012-14.csv** yang berisi data penjualan negara. Kita harus mencari negara manakah yang memiliki penujualan terbanyak pada tahun 2012. Script yang digunakan adalah sebagai berikut:
    `a=$(awk -F, '{  if($7== "2012")  i[$1]+=$10} END {for(x in i ){print i[x]","x}}'  WA_Sales_Products_2012-14.csv | sort -nr | head -1 | awk -F, '{print $2}')`
-   Dengan menggunakan script ini akan didapatkan negara dengan penjualan terbanyak yakni United States. Hasil dari dari AWK akan disimpan dalam variable a sehingga dapat digunakan untuk pencarian selanjutnya.
-   Pencarian selanjutnya adalah mencari 3 penjualan product line terbanyak dari United States. Script yang digunakan adalah sebagai berikut:
+   Dengan menggunakan script ini akan didapatkan negara dengan penjualan terbanyak yakni **United States**. Hasil dari dari AWK akan disimpan dalam variable **a** sehingga dapat digunakan untuk pencarian selanjutnya.
+   Pencarian selanjutnya adalah mencari 3 penjualan product line terbanyak dari **United States**. Script yang digunakan adalah sebagai berikut:
    `awk -v country="$a" -F,  '{  if($7== "2012" && $1 ==  country )  i[$4]+=$10} END {for(x in i ){print i[x]","x}}'  WA_Sales_Products_2012-14.csv | sort -nr | head -3 | awk -F, '{print $2}'`
-   Dengan menggunakan script diatas akan didapatkan 3 product line dengan penjualan terbanyak yakni Personal Accessories, Outdoor Proctection, dan Camping Equipment.
-   
+   Dengan menggunakan script diatas akan didapatkan 3 product line dengan penjualan terbanyak yakni **Personal Accessories, Outdoor Proctection, dan Camping Equipment**. 
+   Selanjutnya adalah mencari 3 teratas penjualan product berdasar dari 3 product line diatas. Untuk mencarinya dapat menggunakan script berikut:
+   `awk -v country="$a" -F, '{  if($7== "2012" && $1 == country && ( $4=="Personal Accessories" || $4=="Outdoor Protection"  || $4=="Camping Equipment" ))  i[$6]+=$10} END {for(x in i ){print i[x]","x}}'  WA_Sales_Products_2012-14.csv | sort -nr | head -3 | awk -F, '{print $2}'`
+   Setelah menjalankan script diatas akan didapatkan hasil **Zone, Trailchef Water Bag, dan Single Edge'.
 
-Soal Nomer 4.
+**Soal Nomer 4.
 
-Pada soal diminta untuk membalik setiap huruf yang ada pada file syslog sesuai dengan perintah yang dimaksud pada soal.
+   Pada soal diminta untuk membalik setiap huruf yang ada pada file syslog sesuai dengan perintah yang dimaksud pada soal.
 Untuk menjalankan enkripsi, bash script dibawah ini.
 `````
 

@@ -20,3 +20,21 @@ Soal 1
       i=$((i+1)) 
   done
   ```
+
+
+Soal nomer 4.
+
+pada soal diminta untuk membalik setiap huruf yang ada pada file syslog sesuai dengan perintah yang dimaksud pada soal.
+Untuk menjalankan enkripsi, bash script dibawah ini.
+`````
+
+letter=abcdefghojklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
+ups=ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+out=$(date +"%H:%M %d-%m-%y")
+shif=$(date +"%k")
+
+`sudo mkdir -p ~/Documents/Sisop1`
+cat /var/log/syslog | tr "${letter:0:26}" "${letter:${shif}:26}" |tr "${ups:0:26}" "${ups:${shif}:26}" > ~/Documents/Sisop1/"$out"
+
+`````

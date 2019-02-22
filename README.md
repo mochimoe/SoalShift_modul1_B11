@@ -1,10 +1,10 @@
 # SoalShift_modul1_B11
 
-Soal 1
+Soal Nomer 1.
 
    Pertama unzip file nature.zip dengan perintah
  
-    ```unzip nature.zip```
+    unzip nature.zip
     
    Setelah itu akan muncul folder dengan nama nature yang berisi file berekstensi .jpg yang masih terenkripsi. Untuk mendekripsi file tersebut gunakan perintah 
   ```base64 -d "nama_file.jpg"  | xxd -r > "nama_file_output.jpg"```
@@ -22,9 +22,9 @@ Soal 1
   ```
 
 
-Soal nomer 4.
+Soal Nomer 4.
 
-pada soal diminta untuk membalik setiap huruf yang ada pada file syslog sesuai dengan perintah yang dimaksud pada soal.
+Pada soal diminta untuk membalik setiap huruf yang ada pada file syslog sesuai dengan perintah yang dimaksud pada soal.
 Untuk menjalankan enkripsi, bash script dibawah ini.
 `````
 
@@ -34,8 +34,8 @@ ups=ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ
 out=$(date +"%H:%M %d-%m-%y")
 shif=$(date +"%k")
 
-`sudo mkdir -p ~/Documents/Sisop1`
-cat /var/log/syslog | tr "${letter:0:26}" "${letter:${shif}:26}" |tr "${ups:0:26}" "${ups:${shif}:26}" > ~/Documents/Sisop1/"$out"
+`sudo mkdir -p ~/Documents/SyslogBackUp`
+cat /var/log/syslog | tr "${letter:0:26}" "${letter:${shif}:26}" |tr "${ups:0:26}" "${ups:${shif}:26}" > ~/Documents/SyslogBackUp/"$out"
 
 `````
 
@@ -53,6 +53,6 @@ b=ABCDEFGHIJKLMNOPQRSTUVWXYZ
 rot=`echo $rot|sed 's/^0*//'`
 let r=0-$rot
 
-`sudo <~/Documents/Sisop1/"$filenama"  sed "y/$a$b/${a:$r}${a::$r}${b:$r}${b::$r}/" > ~/Documents/Sisop1/"terdekrip$filenama"`
+`sudo <~/Documents/SyslogBackUp/"$filenama"  sed "y/$a$b/${a:$r}${a::$r}${b:$r}${b::$r}/" > ~/Documents/SyslogBackUp/"terdekrip$filenama"`
 
 `````````

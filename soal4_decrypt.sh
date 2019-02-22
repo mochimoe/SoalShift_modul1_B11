@@ -1,14 +1,13 @@
-#!bin/bash
+#!/bin/bash
 
-letter=abcdefghojklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
-ups=ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ
+echo "Masukkan nama file "
+read filenama
+rot=${filenama:0:2}
 
-for n in ~/Documents/Sisop1/Syslog/*
-do
-	name=$(basename "$n")
-#	echo $name
-	shif=${name:0:2}
-	out="Decrypted $name"
-	cat "$n" | tr "${letter:${sif}:26}" "${letter:0:26}" | tr "${ups:${sif}:26}" "${ups:0:26}"  > "Syslog Decrypted/$out"
+a=abcdefghijklmnopqrstuvwxyz
+b=ABCDEFGHIJKLMNOPQRSTUVWXYZ
+rot=`echo $rot|sed 's/^0*//'`
+let r=0-$rot
 
-done
+`sudo <~/Documents/Sisop1/"$filenama"  sed "y/$a$b/${a:$r}${a::$r}${b:$r}${b::$r}/" > ~/Documents/Sisop1/"terdekrip$filenama"`
+

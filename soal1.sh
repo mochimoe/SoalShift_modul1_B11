@@ -1,4 +1,4 @@
-cd ~/Downloads
+mkdir ~/Documents/Sisop1/Decode 
 
 unzip nature.zip
 

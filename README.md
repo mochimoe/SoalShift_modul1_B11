@@ -1,6 +1,6 @@
 # SoalShift_modul1_B11
 
-**Soal Nomer 1.
+**Soal Nomer 1.**
 
    Pertama unzip file nature.zip dengan perintah
  
@@ -25,7 +25,7 @@
    14 14 * 2 5 [user] [Path to soal1.sh]`
    Lalu simpan, selanjutnya script akan berjalan secara otomatis pada waktu yang telah ditetapkan pada cornjob.
    
-**Soal Nomer 2.
+**Soal Nomer 2.**
 
    Terdapat sebuah file **WA_Sales_Products_2012-14.csv** yang berisi data penjualan negara. Kita harus mencari negara manakah yang memiliki penujualan terbanyak pada tahun 2012. Script yang digunakan adalah sebagai berikut:
    `a=$(awk -F, '{  if($7== "2012")  i[$1]+=$10} END {for(x in i ){print i[x]","x}}'  WA_Sales_Products_2012-14.csv | sort -nr | head -1 | awk -F, '{print $2}')`
@@ -37,7 +37,7 @@
    `awk -v country="$a" -F, '{  if($7== "2012" && $1 == country && ( $4=="Personal Accessories" || $4=="Outdoor Protection"  || $4=="Camping Equipment" ))  i[$6]+=$10} END {for(x in i ){print i[x]","x}}'  WA_Sales_Products_2012-14.csv | sort -nr | head -3 | awk -F, '{print $2}'`
    Setelah menjalankan script diatas akan didapatkan hasil **Zone, Trailchef Water Bag, dan Single Edge'.
 
-**Soal Nomer 4.
+**Soal Nomer 4.**
 
    Pada soal diminta untuk membalik setiap huruf yang ada pada file syslog sesuai dengan perintah yang dimaksud pada soal.
 Untuk menjalankan enkripsi, bash script dibawah ini.

@@ -28,7 +28,7 @@ pada soal diminta untuk membalik setiap huruf yang ada pada file syslog sesuai d
 Untuk menjalankan enkripsi, bash script dibawah ini.
 `````
 
-letter=abcdefghojklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
+letter=abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
 ups=ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ
 
 out=$(date +"%H:%M %d-%m-%y")
@@ -38,3 +38,21 @@ shif=$(date +"%k")
 cat /var/log/syslog | tr "${letter:0:26}" "${letter:${shif}:26}" |tr "${ups:0:26}" "${ups:${shif}:26}" > ~/Documents/Sisop1/"$out"
 
 `````
+
+untuk mendekrip fie syslog tadi jalankan script dibawah ini
+
+````````
+#!/bin/bash
+
+echo "Masukkan nama file "
+read filenama
+rot=${filenama:0:2}
+
+a=abcdefghijklmnopqrstuvwxyz
+b=ABCDEFGHIJKLMNOPQRSTUVWXYZ
+rot=`echo $rot|sed 's/^0*//'`
+let r=0-$rot
+
+`sudo <~/Documents/Sisop1/"$filenama"  sed "y/$a$b/${a:$r}${a::$r}${b:$r}${b::$r}/" > ~/Documents/Sisop1/"terdekrip$filenama"`
+
+`````````

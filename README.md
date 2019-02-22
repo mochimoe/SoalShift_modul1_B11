@@ -53,6 +53,66 @@ awk -v country="$a" -F, '{  if($7== "2012" && $1 == country && ( $4=="Personal A
 
    Setelah menjalankan script diatas akan didapatkan hasil **Zone, Trailchef Water Bag, dan Single Edge'.
 
+**Soal Nomer 3.**
+
+   Pada soal 3, kita diminta untuk membuat sebuah password sepanjang 12 karakter yang terdiri dari huruf kecil, huruf kapital, dan angka yang akan disimpan pada sebuah file dengan extensi .txt dengan beberapa ketentuan pemberian nama secara terurut dimulai dari 1 tanpa ada yang terlewat meski terdapat file yang dihapus. Juga dapat dipastikan bahwa password yang dipastikan tidak ada yang sama. Script untuk menyelesaikan soal tersebut adalah sebagai berikut:
+
+```
+#!/bin/bash
+
+password=string
+while [ 0 ]
+do
+	while
+		password="$(dd if=/dev/urandom|tr -dc A-Za-z0-9|head -c 12)"
+
+		echo "$password"
+		kcl=0
+		bsr=0
+		angka=0
+		for kata in password
+		do
+		if [[ $kata = [A-Z] ]]
+			then
+			let bsr=$bsr+1;
+		fi
+
+		if [[ $kata == [a-z] ]]
+			then 
+			let kcl=$kcl+1;
+		fi
+		if [[ $kata == [0-9] ]]
+			then
+			let angka=$angka+1;
+		fi
+	done
+	[ $bsr -gt 0 ] && [ $kcl -gt 0] && [$angka -gt 0]
+do :;done
+
+
+i=1
+file=~/Documents/Sisop1/Key/Key
+	while [ -s "$file$i.txt" ]
+	do
+		value=$(<$file$i.txt)
+		if test "$value" = "$password"
+		then
+			break
+		fi
+
+		let i=$i+1
+	done
+
+	if test "$value" = "$password"
+	then
+	continue
+	fi
+	break
+done
+
+echo "$password" > $file$i.txt
+```
+
 **Soal Nomer 4.**
 
    Pada soal diminta untuk membalik setiap huruf yang ada pada file syslog sesuai dengan perintah yang dimaksud pada soal.

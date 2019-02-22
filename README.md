@@ -132,7 +132,7 @@ cat /var/log/syslog | tr "${letter:0:26}" "${letter:${shif}:26}" |tr "${ups:0:26
 
 untuk mendekrip fie syslog tadi jalankan script dibawah ini
 
-````````
+```
 #!/bin/bash
 
 echo "Masukkan nama file "
@@ -146,4 +146,16 @@ let r=0-$rot
 
 `sudo <~/Documents/SyslogBackUp/"$filenama"  sed "y/$a$b/${a:$r}${a::$r}${b:$r}${b::$r}/" > ~/Documents/SyslogBackUp/"terdekrip$filenama"`
 
-`````````
+```
+
+**Soal Nomer 5.**
+
+Pada soal 5, harus menyimpan record dari syslog dengan beberapa kriteria yakni tidak mengandung string "sudo", tetapi mengandung string "cron" yang mana harus case insensitive, jumlah field pada 1 line kurang dari 13, memasukan hasil pencarian pada direktori ~/modul1 , dan dilakukan secara otomatis setiap 6 menit dimulai dari menit ke-2 diakhiri pada menit ke-30. 
+
+```
+awk '/cron/,!/sudo/ NF<13 {print}  ' /var/log/syslog > ~/modul1/log
+```
+Untuk script cronjobny adalah sebagai berikut:
+```
+2-30/6 * * * * [user] [Path to script]
+```

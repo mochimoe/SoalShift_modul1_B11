@@ -9,5 +9,5 @@ b=ABCDEFGHIJKLMNOPQRSTUVWXYZ
 rot=`echo $rot|sed 's/^0*//'`
 let r=0-$rot
 
-`sudo <~/Documents/Sisop1/"$filenama"  sed "y/$a$b/${a:$r}${a::$r}${b:$r}${b::$r}/" > ~/Documents/SyslogBackUp/"terdekrip$filenama"`
+`sudo <~/Documents/SyslogBackUp/"$filenama"  sed "y/$a$b/${a:$r}${a::$r}${b:$r}${b::$r}/" > ~/Documents/SyslogBackUp/"terdekrip$filenama"`
 

@@ -7,25 +7,7 @@ do
 		password="$(dd if=/dev/urandom|tr -dc A-Za-z0-9|head -c 12)"
 
 		echo "$password"
-		kcl=0
-		bsr=0
-		angka=0
-		for kata in password
-		do
-		if [[ $kata = [A-Z] ]]
-			then
-			let bsr=$bsr+1;
-		fi
-
-		if [[ $kata == [a-z] ]]
-			then 
-			let kcl=$kcl+1;
-		fi
-		if [[ $kata == [0-9] ]]
-			then
-			let angka=$angka+1;
-		fi
-	done
+		
 	[ $bsr -gt 0 ] && [ $kcl -gt 0] && [$angka -gt 0]
 do :;done
 

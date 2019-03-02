@@ -67,25 +67,7 @@ do
 		password="$(dd if=/dev/urandom|tr -dc A-Za-z0-9|head -c 12)"
 
 		echo "$password"
-		kcl=0
-		bsr=0
-		angka=0
-		for kata in password
-		do
-		if [[ $kata = [A-Z] ]]
-			then
-			let bsr=$bsr+1;
-		fi
-
-		if [[ $kata == [a-z] ]]
-			then 
-			let kcl=$kcl+1;
-		fi
-		if [[ $kata == [0-9] ]]
-			then
-			let angka=$angka+1;
-		fi
-	done
+		
 	[ $bsr -gt 0 ] && [ $kcl -gt 0] && [$angka -gt 0]
 do :;done
 
@@ -153,7 +135,7 @@ let r=0-$rot
 Pada soal 5, harus menyimpan record dari syslog dengan beberapa kriteria yakni tidak mengandung string "sudo", tetapi mengandung string "cron" yang mana harus case insensitive, jumlah field pada 1 line kurang dari 13, memasukan hasil pencarian pada direktori ~/modul1 , dan dilakukan secara otomatis setiap 6 menit dimulai dari menit ke-2 diakhiri pada menit ke-30. 
 
 ```
-awk '/cron/,!/sudo/ NF<13 {print}  ' /var/log/syslog > ~/modul1/log
+awk '/cron/ || /CRON/ && !/sudo/  if(NF > 13) {print}  ' /var/log/syslog > ~/modul1/log
 ```
 Untuk script cronjobny adalah sebagai berikut:
 ```
